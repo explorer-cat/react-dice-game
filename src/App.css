@@ -16,13 +16,29 @@ button{
   margin : 12px;
 }
 
+.Board{
+  display: flex;
+  justify-content: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+.gray {
+  margin-top:12px;
+  padding:8px;
+  color: gray;
+}
+.white{
+  padding:8px;
+  color:white;
+}
 
 .BoardDiv{
+  padding:12px;
+  margin:12px;
   width: 20%;
+
   border: 1px solid slateblue;
   border-radius: 12px;
 }

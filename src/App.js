@@ -6,7 +6,9 @@ import './App.css';
 import utils from './utils'
 import { randNum } from './utils';
 
+
 function App() {
+
   const [myDiceValue, setMyDiceValue] = React.useState(1);
   const [otherDiceValue, setOtherDiceValue] = React.useState(1);
 
@@ -16,50 +18,54 @@ function App() {
   const [myDiceTotalScore , setMyDiceTotalScore] = React.useState(0); 
   const [otherDiceTotalScore , setOtherDiceTotalScore] = React.useState(0); 
 
+
   const handlerDiceClick = (e) => {
-    setMyDiceValue(randNum())
-    setOtherDiceValue(randNum())
+    let myDice = randNum();
+    let oterDice = randNum();
+    setMyDiceValue(myDice)
+    setOtherDiceValue(oterDice)
 
-    setMyDiceHistory([...myDiceHistory,myDiceValue])
-    setOtherDiceHistory([...otherDiceHistory,otherDiceValue])
+    setMyDiceHistory([...myDiceHistory,myDice])
+    setOtherDiceHistory([...otherDiceHistory,oterDice])
 
-    setMyDiceTotalScore(myDiceTotalScore + myDiceValue)
-    setOtherDiceTotalScore(otherDiceTotalScore + otherDiceValue)
+    setMyDiceTotalScore(myDiceTotalScore + myDice)
+    setOtherDiceTotalScore(otherDiceTotalScore + oterDice)
   }
 
   const handlerClearDice = (e) => {
-
+    setMyDiceValue(1)
+    setOtherDiceValue(1)
+    setMyDiceHistory([])
+    setOtherDiceHistory([])
+    setMyDiceTotalScore(0)
+    setOtherDiceTotalScore(0)
   }
 
   return (
     <div className="App">
       <button onClick={handlerDiceClick}>던지기</button>
       <button onClick={handlerClearDice}>초기화</button>
-      <div className = "BoardDiv">
-          나
-          <Board value ='blue' num = {myDiceValue}/>
-          <div>기록:{myDiceHistory.join(", ")}</div>
-          <div>총점:{myDiceTotalScore}</div>
-      </div>
-       <div className = "BoardDiv">
-          상대
-          <Board value = 'red' num = {otherDiceValue}/>
-          <div>기록:{otherDiceHistory.join(", ")}</div>
-          <div>총점:{otherDiceTotalScore}</div>
+
+      <div className = "Board">
+        <div className = "BoardDiv">
+            <div className = "white">나</div>
+            <Board value ='blue' num = {myDiceValue}/>
+            <div className = "gray">기록</div>
+            <div className = "white">{myDiceHistory.join(", ")}</div>
+            <div className = "gray">총점</div>
+            <div className = "white">{myDiceTotalScore}</div>
+        </div>
+        <div className = "BoardDiv">
+        <div className = "white">상대</div>
+            <Board value = 'red' num = {otherDiceValue}/>
+            <div className = "gray">기록</div>
+            <div className = "white">{otherDiceHistory.join(", ")}</div>
+            <div className = "gray">총점</div>
+            <div className = "white">{otherDiceTotalScore}</div>
+        </div>
       </div>
   </div>
   );
 }
-
-/*
-            나
-          <Board value ='blue' num = {myDiceValue}/>
-          <div>기록:{myDiceHistory.join(", ")}</div>
-          <div>총점:{myDiceTotalScore}</div>
-            상대
-          <Board value = 'red' num = {otherDiceValue}/>
-          <div>기록:{otherDiceHistory.join(", ")}</div>
-          <div>총점:{otherDiceTotalScore}</div>
-*/
-
+ 
 export default App;
