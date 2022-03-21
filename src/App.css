@@ -2,9 +2,36 @@
   text-align: center;
 }
 
+body {
+  justify-content: center;
+  background: #282c34;
+}
+
+button{
+  border-radius: 15px;
+  background-color: #61dafb;
+  border: solid 1px blue;
+  width: 60px;
+  padding:4px;
+  margin : 12px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.BoardDiv{
+  width: 20%;
+  border: 1px solid slateblue;
+  border-radius: 12px;
+}
+
+
+
+.blueDice,
+.redDice{
+  padding:  15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
